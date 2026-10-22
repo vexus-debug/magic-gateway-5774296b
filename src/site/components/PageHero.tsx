@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
+import HeroBackdrop from "./HeroBackdrop";
 
 type ProofPoint = { value: string; label: string };
 
@@ -46,7 +47,8 @@ const CtaButton = ({ cta }: { cta: Cta }) => {
 
 const PageHero = ({ eyebrow, title, description, primaryCta, secondaryCta, points = [] }: PageHeroProps) => {
   return (
-    <section className="relative bg-[hsl(var(--medical-blue-dark))] py-20 md:py-28">
+    <section className="relative overflow-hidden bg-[hsl(var(--medical-blue-dark))] py-20 md:py-28">
+      <HeroBackdrop />
       <div className="container relative z-10">
         <div className="grid items-end gap-12 lg:grid-cols-12">
           <motion.div

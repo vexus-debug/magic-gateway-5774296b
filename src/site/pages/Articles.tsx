@@ -66,16 +66,17 @@ const Articles = () => {
 
   return (
     <Layout>
-      <section className="border-b border-border/70 pb-10 pt-32 md:pt-40">
-        <div className="container max-w-6xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-primary">Clinexus Articles</p>
+      <section className="relative overflow-hidden bg-[hsl(var(--medical-blue-dark))] pb-16 pt-32 md:pb-20 md:pt-40">
+        <HeroBackdrop />
+        <div className="container relative z-10 max-w-6xl">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white/50">Clinexus Articles</p>
           <div className="mt-4 grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end">
-            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl">
               {category ? category.name : <>Notes on running a <em className="font-serif font-normal">better</em> clinic</>}
             </h1>
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-base leading-relaxed text-white/60">
               {category?.description ??
-                "Practical writing on practice management, patient marketing and the specialties we serve — dental, eye care and laboratory."}
+                "Practical writing on practice management, patient marketing and the specialties we serve: dental, eye care and laboratory."}
             </p>
           </div>
         </div>
