@@ -403,7 +403,7 @@ export const articles: Article[] = [
   // ───────────────────────── LABORATORY ─────────────────────────
   {
     slug: "diagnostic-lab-result-turnaround",
-    title: "\"Is my result ready?\", cutting the calls that clog your lab front desk",
+    title: "\"Is my result ready?\" Cutting the calls that clog your lab front desk",
     excerpt:
       "Patients waiting, phones ringing, results lost between the bench and reception. How diagnostic centres speed up turnaround and send results securely.",
     category: "laboratory",
