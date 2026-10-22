@@ -2,6 +2,7 @@
  * Clinexus articles (blog). Add new articles to `articles` below.
  * Body is a list of simple blocks so posts render consistently.
  */
+import { articleExtensions, estimateReadMinutes } from "./articleExtensions";
 import dentalRecall from "@/assets/articles/dental-recall.jpg";
 import eyeDispensary from "@/assets/articles/eye-dispensary.jpg";
 import frontDesk from "@/assets/articles/front-desk.jpg";
@@ -77,7 +78,7 @@ export interface Article {
 }
 
 export const articleCategories: ArticleCategory[] = [
-  { slug: "practice", name: "Practice management", group: "Topics", description: "Running the clinic day to day — scheduling, staff, billing and stock." },
+  { slug: "practice", name: "Practice management", group: "Topics", description: "Running the clinic day to day, scheduling, staff, billing and stock." },
   { slug: "marketing", name: "Marketing", group: "Topics", description: "Finding new patients, keeping existing ones and building a local reputation." },
   { slug: "technology", name: "Technology & compliance", group: "Topics", description: "Records, data protection, consent and going paperless." },
   { slug: "dental", name: "Dental", group: "Specialties", description: "Charting, treatment plans, lab work and the dental chair." },
@@ -106,7 +107,7 @@ export const articles: Article[] = [
     cover: dentalRecall,
     featured: true,
     body: [
-      { type: "p", text: "You know this patient. He came in on a Monday with his cheek swollen, barely sleeping. You opened the tooth, cleaned the canals, placed a temporary dressing and told him to come back next week. He said, \"Doctor, I will come, no wahala.\" Then the pain went away — and so did he." },
+      { type: "p", text: "You know this patient. He came in on a Monday with his cheek swollen, barely sleeping. You opened the tooth, cleaned the canals, placed a temporary dressing and told him to come back next week. He said, \"Doctor, I will come, no wahala.\" Then the pain went away, and so did he." },
       { type: "p", text: "Four months later he is back, the tooth has cracked down to the root, and now it is an extraction. He thinks the treatment failed. You know the treatment was never finished." },
       { type: "h2", text: "The real reason they disappear" },
       { type: "p", text: "In most Nigerian practices we speak with, it is rarely about money alone. It is a mix of three things:" },
@@ -116,27 +117,27 @@ export const articles: Article[] = [
         "The patient never saw the whole plan. He agreed to 'treatment', not to 'three visits and a crown costing ₦X'.",
       ] },
       { type: "h2", text: "Show the full plan on day one" },
-      { type: "p", text: "Patients commit to what they can see. When the whole journey — access and cleaning, obturation, post and core, crown — is laid out on the chart with the cost of each stage, the second visit stops being a surprise and becomes the next step." },
+      { type: "p", text: "Patients commit to what they can see. When the whole journey, access and cleaning, obturation, post and core, crown, is laid out on the chart with the cost of each stage, the second visit stops being a surprise and becomes the next step." },
       { type: "image", src: dentalCharts, alt: "Clinexus dental chart with tooth-by-tooth treatment staging", caption: "Each tooth carries its own staged plan, so anyone at the clinic can see what is pending." },
       { type: "tip", title: "Try this tomorrow", text: "Before the patient leaves the chair, book the next stage while he is still holding his jaw. A date on the calendar is ten times stronger than 'call us when you are ready'." },
       { type: "h2", text: "Make the follow-up automatic, not personal" },
       { type: "p", text: "Reminders sent from a receptionist's own WhatsApp disappear when she resigns, changes SIM or simply forgets during a busy Saturday. In Clinexus, unfinished treatment plans surface on the dashboard and recalls go out from the clinic, in the clinic's name." },
       { type: "image", src: dentalTreatments, alt: "Clinexus treatments screen showing pending and completed procedures", caption: "Pending stages stay visible until they are completed or deliberately closed." },
       { type: "h2", text: "Let them pay in steps" },
-      { type: "p", text: "A ₦250,000 root canal and crown is a hard 'yes' in one go. Split across a deposit and two instalments tied to each stage, it becomes manageable — and the deposit itself is a commitment to return. Payment plans in Clinexus track what has been paid against each stage so your front desk never has to guess." },
+      { type: "p", text: "A ₦250,000 root canal and crown is a hard 'yes' in one go. Split across a deposit and two instalments tied to each stage, it becomes manageable, and the deposit itself is a commitment to return. Payment plans in Clinexus track what has been paid against each stage so your front desk never has to guess." },
       { type: "quote", text: "The best recall system is the one that still works on the day your best receptionist is on leave." },
       { type: "h2", text: "What to measure" },
       { type: "list", items: [
         "Percentage of multi-visit plans completed within 60 days.",
         "Number of open treatment plans older than 30 days.",
-        "Revenue sitting in unfinished stages — the money you already earned clinically but have not collected.",
+        "Revenue sitting in unfinished stages, the money you already earned clinically but have not collected.",
       ] },
       { type: "p", text: "Once you can see that last number every morning, you will never look at a missed appointment the same way again." },
     ],
   },
   {
     slug: "dental-lab-cases-lost-in-lagos-traffic",
-    title: "The crown is not back from the lab — again. Fixing dental lab chaos",
+    title: "The crown is not back from the lab, again. Fixing dental lab chaos",
     excerpt:
       "Impressions sent by dispatch rider, no tracking, patients turning up for fitting to an empty tray. A calmer way to run lab work between your clinic and your technician.",
     category: "dental",
@@ -154,10 +155,10 @@ export const articles: Article[] = [
         "Lab invoices arriving at month end with no way to match them to patients or treatments.",
       ] },
       { type: "h2", text: "Treat every case like a parcel with a tracking number" },
-      { type: "p", text: "In Clinexus, a lab case is created from the patient's treatment, with the tooth, shade, material and due date attached. Sent, received at lab, in progress, returned, fitted — every status change is timestamped. If your lab also uses Clinexus, they see the case on their side the moment you send it." },
-      { type: "tip", title: "A simple rule", text: "Never book the fitting until the lab has accepted the case and given a due date. Then book the patient two days after it — not on the day." },
+      { type: "p", text: "In Clinexus, a lab case is created from the patient's treatment, with the tooth, shade, material and due date attached. Sent, received at lab, in progress, returned, fitted, every status change is timestamped. If your lab also uses Clinexus, they see the case on their side the moment you send it." },
+      { type: "tip", title: "A simple rule", text: "Never book the fitting until the lab has accepted the case and given a due date. Then book the patient two days after it, not on the day." },
       { type: "h2", text: "Know what each case really cost you" },
-      { type: "p", text: "Lab fees are one of the biggest costs in restorative dentistry, yet most clinics only see them as a lump sum. When each lab invoice is tied to the case and the patient, you can finally see the true margin on a zirconia crown versus a PFM — and price accordingly." },
+      { type: "p", text: "Lab fees are one of the biggest costs in restorative dentistry, yet most clinics only see them as a lump sum. When each lab invoice is tied to the case and the patient, you can finally see the true margin on a zirconia crown versus a PFM, and price accordingly." },
       { type: "image", src: dentalProfit, alt: "Clinexus profitability view by treatment", caption: "Profitability by treatment, with lab and material costs taken into account." },
       { type: "p", text: "The result is fewer embarrassing phone calls, fewer wasted patient trips, and a lab relationship built on records instead of memory." },
     ],
@@ -166,7 +167,7 @@ export const articles: Article[] = [
     slug: "stop-front-desk-leakage-dental-clinic",
     title: "Where the money goes: stopping quiet leakage at your dental front desk",
     excerpt:
-      "Unconfirmed transfers, cash with no receipt, consumables that vanish. Not accusations — just gaps. Here is how to close them without turning your clinic into a police station.",
+      "Unconfirmed transfers, cash with no receipt, consumables that vanish. Not accusations, just gaps. Here is how to close them without turning your clinic into a police station.",
     category: "dental",
     publishedAt: "2026-09-25",
     readMinutes: 7,
@@ -177,15 +178,15 @@ export const articles: Article[] = [
       { type: "h2", text: "The usual gaps" },
       { type: "list", items: [
         "\"I have sent it\" transfers that nobody confirms against the bank alert.",
-        "Cash payments for scaling and polishing recorded at the end of the day — from memory.",
+        "Cash payments for scaling and polishing recorded at the end of the day, from memory.",
         "Discounts given verbally with no approval.",
         "Composite, anaesthetic and impression material used with no link to a billed procedure.",
       ] },
       { type: "h2", text: "Every treatment creates a bill. Every bill shows how it was paid." },
-      { type: "p", text: "When the dentist marks a procedure done, Clinexus raises the invoice automatically. The front desk records each payment by method — cash, POS, transfer — and partial payments stay open until settled. At close of day, the cash and POS totals are right there to compare." },
+      { type: "p", text: "When the dentist marks a procedure done, Clinexus raises the invoice automatically. The front desk records each payment by method, cash, POS, transfer, and partial payments stay open until settled. At close of day, the cash and POS totals are right there to compare." },
       { type: "image", src: dentalBilling, alt: "Clinexus dental billing screen with invoices and payment methods", caption: "Invoices, part-payments and methods in one place." },
       { type: "h2", text: "Let stock follow the treatment" },
-      { type: "p", text: "Link the materials a procedure normally uses, and stock goes down when the treatment is done. When the shelf count and the system disagree, you have a specific question to ask — not a vague suspicion." },
+      { type: "p", text: "Link the materials a procedure normally uses, and stock goes down when the treatment is done. When the shelf count and the system disagree, you have a specific question to ask, not a vague suspicion." },
       { type: "image", src: dentalInventory, alt: "Clinexus dental inventory with stock levels", caption: "Low-stock alerts arrive before you run out mid-procedure." },
       { type: "tip", title: "Keep it respectful", text: "Tell your team why you are doing this: so that honest staff are never under suspicion. Clear records protect them as much as they protect you." },
     ],
@@ -205,23 +206,23 @@ export const articles: Article[] = [
     featured: true,
     body: [
       { type: "p", text: "The exam went well. Thirty minutes of careful work, a clear prescription, a patient who thanked you warmly. Then she said, \"Can I have the paper? I will check prices.\" You know exactly where she is going." },
-      { type: "p", text: "For many eye clinics in Nigeria, the dispensary should be the steady income that carries the consulting room. Instead it leaks — one handwritten slip at a time." },
+      { type: "p", text: "For many eye clinics in Nigeria, the dispensary should be the steady income that carries the consulting room. Instead it leaks, one handwritten slip at a time." },
       { type: "h2", text: "Why patients walk" },
       { type: "list", items: [
         "The handover from exam room to dispensary is a gap: a slip, a corridor, and a wait.",
-        "Nobody explains what the lenses are for — blue-cut for screen work, photochromic for the sun, thinner lenses for a high prescription.",
+        "Nobody explains what the lenses are for, blue-cut for screen work, photochromic for the sun, thinner lenses for a high prescription.",
         "Prices are not visible, so patients assume the clinic is expensive.",
         "There is no follow-up when the order is not placed that day.",
       ] },
       { type: "h2", text: "Close the loop between exam and dispensing" },
-      { type: "p", text: "In Clinexus, the prescription goes straight from the exam to the optical order screen. The dispenser already has the Rx when the patient sits down — no retyping, no misread cylinder or axis. The patient still gets a printed copy; they just no longer need it to buy." },
+      { type: "p", text: "In Clinexus, the prescription goes straight from the exam to the optical order screen. The dispenser already has the Rx when the patient sits down, no retyping, no misread cylinder or axis. The patient still gets a printed copy; they just no longer need it to buy." },
       { type: "image", src: eyeOrders, alt: "Clinexus optical orders screen", caption: "Orders tracked from prescription to collection." },
-      { type: "tip", title: "Say it once, clearly", text: "\"Your prescription is ready at our dispensary — they already have it, and you can collect in three days.\" That one sentence keeps more patients than any discount." },
+      { type: "tip", title: "Say it once, clearly", text: "\"Your prescription is ready at our dispensary, they already have it, and you can collect in three days.\" That one sentence keeps more patients than any discount." },
       { type: "h2", text: "Let patients see the options and the price" },
-      { type: "p", text: "Show two or three frame-and-lens packages at different price points. A patient who sees a ₦35,000 option next to a ₦120,000 one rarely leaves to 'check prices' — they choose." },
+      { type: "p", text: "Show two or three frame-and-lens packages at different price points. A patient who sees a ₦35,000 option next to a ₦120,000 one rarely leaves to 'check prices', they choose." },
       { type: "image", src: eyePrescriptions, alt: "Clinexus eye prescriptions list", caption: "Every prescription stays on the patient's record for repeat orders." },
       { type: "h2", text: "Follow up the ones who did not order" },
-      { type: "p", text: "A prescription without an order is a warm lead. A short, polite WhatsApp a few days later — from the clinic, not a personal phone — brings many of them back." },
+      { type: "p", text: "A prescription without an order is a warm lead. A short, polite WhatsApp a few days later, from the clinic, not a personal phone, brings many of them back." },
     ],
   },
   {
@@ -247,12 +248,12 @@ export const articles: Article[] = [
       { type: "h2", text: "From exam to theatre without the paper trail" },
       { type: "p", text: "When surgery is indicated, Clinexus moves the patient into a surgical booking with the pre-op details already attached. Your theatre list, your consent forms and your post-op reviews sit in one place." },
       { type: "image", src: eyeSurgery, alt: "Clinexus eye surgery schedule", caption: "Surgical cases with pre-op and post-op status." },
-      { type: "tip", title: "For your team", text: "Agree on one way to record IOP — method and time of day — and stick to it. Good software helps, but consistent habits make the trend trustworthy." },
+      { type: "tip", title: "For your team", text: "Agree on one way to record IOP, method and time of day, and stick to it. Good software helps, but consistent habits make the trend trustworthy." },
     ],
   },
   {
     slug: "contact-lens-stock-and-reorders",
-    title: "Contact lens patients are your most loyal — if you never run out",
+    title: "Contact lens patients are your most loyal, if you never run out",
     excerpt:
       "Wrong base curves, expired trial lenses, a toric order that takes a month. How to manage contact lens fittings, stock and reorders calmly.",
     category: "eye-care",
@@ -261,7 +262,7 @@ export const articles: Article[] = [
     author: eyeDesk,
     cover: eyeContacts,
     body: [
-      { type: "p", text: "A contact lens wearer who trusts you will come back every few months for years. Disappoint them once — wrong parameters, out of stock, 'come back next week' — and they will try the pharmacy instead." },
+      { type: "p", text: "A contact lens wearer who trusts you will come back every few months for years. Disappoint them once, wrong parameters, out of stock, 'come back next week', and they will try the pharmacy instead." },
       { type: "h2", text: "Record the full fit, every time" },
       { type: "p", text: "Base curve, diameter, power, cylinder and axis for each eye, plus the brand and wear schedule. When the patient calls for a reorder, anyone on your team can place it correctly without hunting for the original card." },
       { type: "image", src: eyeContacts, alt: "Clinexus contact lens records", caption: "Fitting parameters saved for quick, accurate reorders." },
@@ -287,7 +288,7 @@ export const articles: Article[] = [
     author: team,
     cover: frontDesk,
     body: [
-      { type: "p", text: "WhatsApp is how Nigerians talk. It makes sense that your clinic uses it. But in many practices, the 'clinic WhatsApp' is really one staff member's phone — and every patient conversation goes wherever that phone goes." },
+      { type: "p", text: "WhatsApp is how Nigerians talk. It makes sense that your clinic uses it. But in many practices, the 'clinic WhatsApp' is really one staff member's phone, and every patient conversation goes wherever that phone goes." },
       { type: "h2", text: "What you are risking" },
       { type: "list", items: [
         "Years of patient contacts leaving with a staff member.",
@@ -296,7 +297,7 @@ export const articles: Article[] = [
         "Patient privacy on a device you do not control.",
       ] },
       { type: "h2", text: "Keep the conversation, change the source" },
-      { type: "p", text: "Clinexus keeps appointments and patient details in the clinic's system and sends reminders and confirmations in the clinic's name. Your team still uses WhatsApp — they just are not the only memory of it." },
+      { type: "p", text: "Clinexus keeps appointments and patient details in the clinic's system and sends reminders and confirmations in the clinic's name. Your team still uses WhatsApp, they just are not the only memory of it." },
       { type: "image", src: dentalAppointments, alt: "Clinexus appointments calendar", caption: "Appointments, confirmations and no-shows in one shared calendar." },
       { type: "tip", title: "Start small", text: "Move your appointment book first. Once the calendar lives in the clinic's system, reminders and follow-ups follow naturally." },
     ],
@@ -305,7 +306,7 @@ export const articles: Article[] = [
     slug: "running-multiple-clinic-branches-nigeria",
     title: "Running two branches without living on Third Mainland Bridge",
     excerpt:
-      "If you have to be physically present to know what is happening, you do not have a second branch — you have a second job. How owners stay in control remotely.",
+      "If you have to be physically present to know what is happening, you do not have a second branch, you have a second job. How owners stay in control remotely.",
     category: "practice",
     publishedAt: "2026-09-29",
     readMinutes: 6,
@@ -316,13 +317,13 @@ export const articles: Article[] = [
       { type: "h2", text: "What you actually need to see" },
       { type: "list", items: [
         "Patients seen today, per branch.",
-        "What was billed and what was collected — by cash, POS and transfer.",
+        "What was billed and what was collected, by cash, POS and transfer.",
         "Outstanding balances and who is owing.",
         "Stock levels, so one branch is not ordering what the other has spare.",
       ] },
       { type: "image", src: dentalDashboard, alt: "Clinexus clinic dashboard with daily figures", caption: "One dashboard per branch, with leadership seeing all of them." },
       { type: "h2", text: "Give each person only what they need" },
-      { type: "p", text: "Your branch manager sees their branch. Your dentists see their schedules. Your accountant sees the numbers. You see everything — from your phone, wherever you are." },
+      { type: "p", text: "Your branch manager sees their branch. Your dentists see their schedules. Your accountant sees the numbers. You see everything, from your phone, wherever you are." },
       { type: "quote", text: "Control is not being in every room. It is knowing what happened in every room." },
     ],
   },
@@ -340,7 +341,7 @@ export const articles: Article[] = [
     cover: clinicInterior,
     body: [
       { type: "p", text: "Look at your reception counter right now. Is there a pile of patient folders, names facing up, sitting where anyone in the waiting room can read them? Most clinics have one. It feels normal. It is also exactly the kind of exposure Nigeria's data protection rules are meant to prevent." },
-      { type: "p", text: "This is not legal advice — speak to your lawyer for that — but the principles are simple and worth acting on." },
+      { type: "p", text: "This is not legal advice, speak to your lawyer for that, but the principles are simple and worth acting on." },
       { type: "h2", text: "Three principles that matter" },
       { type: "list", items: [
         "Collect only what you need, and keep it secure.",
@@ -350,7 +351,7 @@ export const articles: Article[] = [
       { type: "h2", text: "What that looks like in practice" },
       { type: "p", text: "In Clinexus, every staff member has a role. The front desk sees contact details and bills, not clinical notes. Clinicians see the chart. Every change is written to an audit log. Records are stored securely in the cloud, not in a cabinet that floods in the rainy season." },
       { type: "image", src: dentalPatients, alt: "Clinexus patient records list", caption: "Patient records with access based on each staff member's role." },
-      { type: "tip", title: "Today", text: "Move the folder pile off the counter. Small change, real difference — and patients notice." },
+      { type: "tip", title: "Today", text: "Move the folder pile off the counter. Small change, real difference, and patients notice." },
     ],
   },
   {
@@ -381,7 +382,7 @@ export const articles: Article[] = [
     slug: "getting-patients-to-leave-google-reviews",
     title: "The patient who loved your clinic but never told anyone",
     excerpt:
-      "Most new patients now check reviews before they call. How to ask happy patients for a review — naturally, at the right moment.",
+      "Most new patients now check reviews before they call. How to ask happy patients for a review, naturally, at the right moment.",
     category: "marketing",
     publishedAt: "2026-09-22",
     readMinutes: 4,
@@ -393,7 +394,7 @@ export const articles: Article[] = [
       { type: "p", text: "The right moment is when the patient is happiest: after the whitening, when the new glasses are on, when the pain is gone. A short message from the clinic later that day, with a direct review link, works far better than a sign on the wall." },
       { type: "list", items: [
         "Ask the same day, while the experience is fresh.",
-        "Make it one tap — send the link, not instructions.",
+        "Make it one tap, send the link, not instructions.",
         "Reply to every review, good or bad, calmly and without patient details.",
       ] },
       { type: "p", text: "Clinexus can collect patient feedback after visits, so you hear concerns privately first and invite happy patients to share publicly." },
@@ -403,7 +404,7 @@ export const articles: Article[] = [
   // ───────────────────────── LABORATORY ─────────────────────────
   {
     slug: "diagnostic-lab-result-turnaround",
-    title: "\"Is my result ready?\" — cutting the calls that clog your lab front desk",
+    title: "\"Is my result ready?\" Cutting the calls that clog your lab front desk",
     excerpt:
       "Patients waiting, phones ringing, results lost between the bench and reception. How diagnostic centres speed up turnaround and send results securely.",
     category: "laboratory",
@@ -416,14 +417,21 @@ export const articles: Article[] = [
       { type: "h2", text: "Track the sample, not just the patient" },
       { type: "list", items: [
         "Label each sample at collection and record its status as it moves.",
-        "Have results reviewed and approved before release — clearly marked.",
+        "Have results reviewed and approved before release, clearly marked.",
         "Notify the patient when the result is ready, with a secure link to view it.",
       ] },
-      { type: "p", text: "Clinexus supports diagnostic centres with test menus, sample tracking and secure result links patients can check themselves — so your front desk can get back to the patients in front of them." },
+      { type: "p", text: "Clinexus supports diagnostic centres with test menus, sample tracking and secure result links patients can check themselves, so your front desk can get back to the patients in front of them." },
       { type: "tip", text: "Tell patients at collection exactly when to expect results and how they will be notified. Most 'is it ready' calls come from not knowing." },
     ],
   },
 ];
+
+// Append long-form continuations and recompute reading time.
+for (const a of articles) {
+  const extra = articleExtensions[a.slug];
+  if (extra) a.body.push(...extra);
+  a.readMinutes = estimateReadMinutes(a.body);
+}
 
 export const getCategory = (slug?: string) => articleCategories.find((c) => c.slug === slug);
 export const getArticle = (slug?: string) => articles.find((a) => a.slug === slug);

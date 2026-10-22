@@ -18,7 +18,7 @@ const Block = ({ block }: { block: ArticleBlock }) => {
       return (
         <blockquote className="my-10 border-l-2 border-primary pl-6 font-serif text-2xl italic leading-snug text-foreground">
           {block.text}
-          {block.cite && <cite className="mt-3 block font-sans text-sm not-italic text-muted-foreground">— {block.cite}</cite>}
+          {block.cite && <cite className="mt-3 block font-sans text-sm not-italic text-muted-foreground">{block.cite}</cite>}
         </blockquote>
       );
     case "tip":
