@@ -2,6 +2,7 @@
  * Clinexus articles (blog). Add new articles to `articles` below.
  * Body is a list of simple blocks so posts render consistently.
  */
+import { articleExtensions, estimateReadMinutes } from "./articleExtensions";
 import dentalRecall from "@/assets/articles/dental-recall.jpg";
 import eyeDispensary from "@/assets/articles/eye-dispensary.jpg";
 import frontDesk from "@/assets/articles/front-desk.jpg";
@@ -424,6 +425,13 @@ export const articles: Article[] = [
     ],
   },
 ];
+
+// Append long-form continuations and recompute reading time.
+for (const a of articles) {
+  const extra = articleExtensions[a.slug];
+  if (extra) a.body.push(...extra);
+  a.readMinutes = estimateReadMinutes(a.body);
+}
 
 export const getCategory = (slug?: string) => articleCategories.find((c) => c.slug === slug);
 export const getArticle = (slug?: string) => articles.find((a) => a.slug === slug);
