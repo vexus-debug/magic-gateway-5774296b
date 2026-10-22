@@ -1,3 +1,4 @@
+import HeroBackdrop from "@/site/components/HeroBackdrop";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
