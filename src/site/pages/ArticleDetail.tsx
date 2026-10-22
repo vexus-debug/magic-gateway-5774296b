@@ -67,22 +67,25 @@ const ArticleDetail = () => {
   return (
     <Layout>
       <div className="fixed left-0 top-0 z-50 h-0.5 bg-primary" style={{ width: `${progress * 100}%` }} />
-      <article className="pb-20 pt-32 md:pt-40">
-        <header className="container max-w-3xl">
-          <Link to="/articles" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
+      <article className="pb-20">
+        <div className="relative overflow-hidden bg-[hsl(var(--medical-blue-dark))] pb-16 pt-32 md:pb-20 md:pt-40">
+        <HeroBackdrop />
+        <header className="container relative z-10 max-w-3xl">
+          <Link to="/articles" className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white">
             <ArrowLeft className="h-4 w-4" /> All articles
           </Link>
           <p className="mt-8 text-[0.7rem] font-semibold uppercase tracking-[0.14em]">
             <Link to={`/articles/category/${article.category}`} className="text-primary">{category?.name}</Link>
-            <span className="mx-2 text-muted-foreground">·</span>
-            <span className="text-muted-foreground">{article.readMinutes} min read</span>
+            <span className="mx-2 text-white/40">·</span>
+            <span className="text-white/50">{article.readMinutes} min read</span>
           </p>
-          <h1 className="mt-4 text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">{article.title}</h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{article.excerpt}</p>
-          <p className="mt-6 border-t border-border/70 pt-4 text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">{article.author.name}</span>, {article.author.role} · {formatArticleDate(article.publishedAt)}
+          <h1 className="mt-4 text-4xl font-semibold leading-[1.08] tracking-tight text-white md:text-5xl">{article.title}</h1>
+          <p className="mt-5 text-lg leading-relaxed text-white/60">{article.excerpt}</p>
+          <p className="mt-6 border-t border-white/10 pt-4 text-sm text-white/50">
+            <span className="font-medium text-white">{article.author.name}</span>, {article.author.role} · {formatArticleDate(article.publishedAt)}
           </p>
         </header>
+        </div>
 
         {article.cover && (
           <div className="container mt-10 max-w-5xl">
